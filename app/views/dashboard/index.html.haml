@@ -37,33 +37,74 @@
           .btn.btn-warning{'ng-click' => 'newSkater()'} New Skater
   %tab{"heading" => "Practices"}
     .practicesController{'ng-controller' => "practicesController"}
-      .list
-        .field_headers
-          .field
-            Year
-          .field
-            Month
-          .field
-            Day
-        %ul
-          %li.item.practice{'ng-repeat' => "practice in practices", 'ng-click' => 'setCurrentPractice(practice)'}
+      %div{'ng-hide' => 'displayPracticeSkaters'}
+        .list
+          .field_headers
             .field
-              {{practice.date | date: 'yyyy'}}
+              Year
             .field
-              {{practice.date | date: 'MMM'}}
+              Month
             .field
-              {{practice.date | date: 'd'}}
-      .currentPractice
-        .row
-          %div{:class=>"col-md-6"}
-            %p{:class=>"input-group"}
-              %input{:type=>"text", :class=>"form-control", "datepicker-popup"=>"{{format}}",
-              "ng-model"=>"currentPractice.date", "is-open"=>"opened", "min-date"=>"minDate", "max-date"=>"'2015-06-22'",
-              "datepicker-options"=>"dateOptions", "date-disabled"=>"disabled(date, mode)", "ng-required"=>"true", "close-text"=>"Close" }
-                %span{:class=>"input-group-btn"}
-                  %button{:type=>"button", :class=>"btn btn-default", "ng-click"=>"open($event)"}
-                    %i.glyphicon.glyphicon-calendar
-        .actions
-          .btn.btn-primary{'ng-click' => 'saveCurrentPractice()'} Save
-        .actions
-          .btn.btn-warning{'ng-click' => 'newPractice()'} New Practice
+              Day
+          %ul
+            %li.item.practice{'ng-repeat' => "practice in practices", 'ng-click' => 'setCurrentPractice(practice)'}
+              .field
+                {{practice.date | date: 'yyyy'}}
+              .field
+                {{practice.date | date: 'MMM'}}
+              .field
+                {{practice.date | date: 'd'}}
+        .currentPractice
+          .row
+            %div{:class=>"col-md-6"}
+              %p{:class=>"input-group"}
+                %input{:type=>"text", :class=>"form-control", "datepicker-popup"=>"{{format}}",
+                "ng-model"=>"currentPractice.date", "is-open"=>"opened", "min-date"=>"minDate", "max-date"=>"'2015-06-22'",
+                "datepicker-options"=>"dateOptions", "date-disabled"=>"disabled(date, mode)", "ng-required"=>"true", "close-text"=>"Close" }
+                  %span{:class=>"input-group-btn"}
+                    %button{:type=>"button", :class=>"btn btn-default", "ng-click"=>"open($event)"}
+                      %i.glyphicon.glyphicon-calendar
+          .actions
+            .btn.btn-primary{'ng-click' => 'saveCurrentPractice()'} Save
+          .actions
+            .btn.btn-info{'ng-show' => 'currentPractice', 'ng-click' => 'showSkaters()'} Skaters
+          .actions
+            .btn.btn-warning{'ng-click' => 'newPractice()'} New Practice
+
+      .practiceSkaters{'ng-show' => 'displayPracticeSkaters'}
+        %h4 Skaters for {{currentPractice.date | date: 'MMM d, yyyy'}}
+        .list
+          .field_headers
+            .field.derby_name
+              Derby Name
+            .field
+              Attended
+            .field
+              Injured
+            .field
+              Vacation
+            .field
+              Partial
+            .field
+              Absent
+
+          %ul
+            %li.item.skater{'ng-repeat' => "skater in skaters", 'ng-click' => 'setCurrentSkater(skater)'}
+              .field.derby_name
+                {{skater.derby_name}}
+              .field
+                %input{type: 'radio', 'ng-model' => 'status', value: 'attended'}
+              .field
+                %input{type: 'radio', 'ng-model' => 'status', value: 'injured'}
+              .field
+                %input{type: 'radio', 'ng-model' => 'status', value: 'vacation'}
+              .field
+                %input{type: 'radio', 'ng-model' => 'status', value: 'partial'}
+              .field
+                %input{type: 'radio', 'ng-model' => 'status', value: 'absent'}
+
+        .btn.btn-primary{'ng-click' => ''} Save
+        .btn.btn-info{'ng-click' => 'hideSkaters()'} Hide
+
+
+

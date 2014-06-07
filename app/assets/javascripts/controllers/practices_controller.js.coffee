@@ -1,8 +1,10 @@
-@derby_app.controller "practicesController", ($scope, $http) ->
+@derby_app.controller "practicesController", (skaters, $scope, $http) ->
   $scope.practices = []
-  $scope.currentPractice = {}
+  $scope.currentPractice = null
   $scope.init = ->
     $scope.pullPractices()
+    $scope.skaters = skaters.all().then (skaters) ->
+      $scope.skaters = skaters.data
 
   $scope.pullPractices = ->
     $http.get("/practices.json").success (data) =>
@@ -12,7 +14,7 @@
     $scope.currentPractice = practice
 
   $scope.newPractice = ->
-    $scope.currentPractice = {}
+    $scope.currentPractice = null
 
   $scope.saveCurrentPractice = ->
     data = practice: {
@@ -22,8 +24,18 @@
     else
       $http.post("/practices.json", data).success => $scope.pullPractices()
 
+  $scope.showSkaters = ->
+    $scope.displayPracticeSkaters = true
+
+  $scope.hideSkaters = ->
+    $scope.displayPracticeSkaters = false
+
+
   $scope.init()
 
+  ##############################################
+  # Datepicker
+  ##############################################
   $scope.today = ->
     $scope.dt = new Date()
 
@@ -49,3 +61,4 @@
   $scope.initDate = new Date('2016-15-20')
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate']
   $scope.format = $scope.formats[0]
+
