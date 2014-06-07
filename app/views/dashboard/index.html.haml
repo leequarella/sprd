@@ -33,6 +33,37 @@
           %input{'ng-model' => 'currentSkater.email', placeholder: 'Email'}
         .actions
           .btn.btn-primary{'ng-click' => 'saveCurrentSkater()'} Save
+        .actions
+          .btn.btn-warning{'ng-click' => 'newSkater()'} New Skater
   %tab{"heading" => "Practices"}
-    .practicesController
-
+    .practicesController{'ng-controller' => "practicesController"}
+      .list
+        .field_headers
+          .field
+            Year
+          .field
+            Month
+          .field
+            Day
+        %ul
+          %li.item.practice{'ng-repeat' => "practice in practices", 'ng-click' => 'setCurrentPractice(practice)'}
+            .field
+              {{practice.date | date: 'yyyy'}}
+            .field
+              {{practice.date | date: 'MMM'}}
+            .field
+              {{practice.date | date: 'd'}}
+      .currentPractice
+        .row
+          %div{:class=>"col-md-6"}
+            %p{:class=>"input-group"}
+              %input{:type=>"text", :class=>"form-control", "datepicker-popup"=>"{{format}}",
+              "ng-model"=>"currentPractice.date", "is-open"=>"opened", "min-date"=>"minDate", "max-date"=>"'2015-06-22'",
+              "datepicker-options"=>"dateOptions", "date-disabled"=>"disabled(date, mode)", "ng-required"=>"true", "close-text"=>"Close" }
+                %span{:class=>"input-group-btn"}
+                  %button{:type=>"button", :class=>"btn btn-default", "ng-click"=>"open($event)"}
+                    %i.glyphicon.glyphicon-calendar
+        .actions
+          .btn.btn-primary{'ng-click' => 'saveCurrentPractice()'} Save
+        .actions
+          .btn.btn-warning{'ng-click' => 'newPractice()'} New Practice

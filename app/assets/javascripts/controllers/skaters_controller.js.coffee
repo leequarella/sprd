@@ -11,6 +11,9 @@
   $scope.setCurrentSkater = (skater) ->
     $scope.currentSkater = skater
 
+  $scope.newSkater = ->
+    $scope.currentSkater = {}
+
   $scope.saveCurrentSkater = ->
     data = skater: {
       first_name: $scope.currentSkater.first_name
