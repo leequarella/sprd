@@ -1,4 +1,4 @@
-@derby_app.controller "practicesController", (skaters, $scope, $http) ->
+@derby_app.controller "practicesController", ["skaters", "$scope", "$http", (skaters, $scope, $http) ->
   $scope.practices = []
   $scope.currentPractice = null
   $scope.init = ->
@@ -61,4 +61,4 @@
   $scope.initDate = new Date('2016-15-20')
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate']
   $scope.format = $scope.formats[0]
-
+]

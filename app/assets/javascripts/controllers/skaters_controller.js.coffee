@@ -1,4 +1,4 @@
-@derby_app.controller "skatersController", ($scope, $http) ->
+@derby_app.controller "skatersController", ["$scope", "$http", ($scope, $http) ->
   $scope.skaters = []
   $scope.currentSkater = {}
   $scope.init = ->
@@ -25,3 +25,4 @@
       $http.post("/skaters.json", data).success => $scope.pullSkaters()
 
   $scope.init()
+]
