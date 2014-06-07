@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @skater.first_name
+%p
+  %b Last name:
+  = @skater.last_name
+%p
+  %b Derby name:
+  = @skater.derby_name
+%p
+  %b Email:
+  = @skater.email
+
+= link_to 'Edit', edit_skater_path(@skater)
+\|
+= link_to 'Back', skaters_path

@@ -1,0 +1,41 @@
+.field_headers
+  background: black
+  height: 1.8em
+  width: 100%
+
+.field_headers .field
+  background: black
+  color: #eee
+
+.field_headers .field, .list .field
+  float: left
+  padding: 4px
+  height: 1.8em
+  width: 25%
+
+.list
+  -webkit-user-select: none
+  -moz-user-select:    none
+  -ms-user-select:     none
+  -o-user-select:      none
+  user-select:         none
+  border: 1px solid
+  cursor: pointer
+  ul
+    height: 260px
+    list-style-type: none
+    max-height: 260px
+    margin: 0
+    overflow-y: auto
+    padding: 0
+  li
+    width: 100%
+    height: 2em
+    &:nth-child(even)
+      background: #ddd
+      &:hover
+        background: #aaa
+    &:nth-child(odd)
+      background: #eee
+      &:hover
+        background: #aaa

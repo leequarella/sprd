@@ -1,0 +1,15 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: im1coolguy
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: sprd_development
+
+test:
+  <<: *default
+  database: sprd_test

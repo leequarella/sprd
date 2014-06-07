@@ -1,0 +1,25 @@
+%h1 Listing skaters
+
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Derby name
+    %th Email
+    %th
+    %th
+    %th
+
+  - @skaters.each do |skater|
+    %tr
+      %td= skater.first_name
+      %td= skater.last_name
+      %td= skater.derby_name
+      %td= skater.email
+      %td= link_to 'Show', skater
+      %td= link_to 'Edit', edit_skater_path(skater)
+      %td= link_to 'Destroy', skater, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Skater', new_skater_path

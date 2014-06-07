@@ -1,0 +1,22 @@
+= form_for @skater do |f|
+  - if @skater.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@skater.errors.count, "error")} prohibited this skater from being saved:"
+      %ul
+        - @skater.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :derby_name
+    = f.text_field :derby_name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .actions
+    = f.submit 'Save'

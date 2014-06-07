@@ -1,0 +1,19 @@
+%h1 Listing practices
+
+%table
+  %tr
+    %th Date
+    %th
+    %th
+    %th
+
+  - @practices.each do |practice|
+    %tr
+      %td= practice.date.strftime("%a %b %d %Y")
+      %td= link_to 'Show', practice
+      %td= link_to 'Edit', edit_practice_path(practice)
+      %td= link_to 'Destroy', practice, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Practice', new_practice_path
