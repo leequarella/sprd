@@ -1,4 +1,4 @@
-@derby_app.factory 'skaters', ($http) ->
+@derby_app.factory 'skaters', ["$http", ($http) ->
   skatersFactory = {}
   skatersFactory.data = ''
 
@@ -6,3 +6,4 @@
     @data = $http.get('/skaters.json').then (data) => return data
 
   skatersFactory
+]
