@@ -12,6 +12,18 @@
 
   $scope.setCurrentPractice = (practice) ->
     $scope.currentPractice = practice
+    $scope.getStatuses()
+
+  $scope.getStatuses = ->
+    $http.get("/practices/#{$scope.currentPractice.id}/statuses").then (statuses) =>
+      $scope.appendStatuses statuses.data
+
+  $scope.appendStatuses = (statuses) ->
+    for skater in $scope.skaters
+      match = {status: '', id: null}
+      for status in statuses
+        match = status if status.skater_id == skater.id
+      skater.status = match
 
   $scope.newPractice = ->
     $scope.currentPractice = null
@@ -30,6 +42,19 @@
   $scope.hideSkaters = ->
     $scope.displayPracticeSkaters = false
 
+  $scope.saveStatus = (skater)->
+    console.log skater
+    console.log skater.status
+    console.log skater.status.status
+    console.log '-------------------------'
+    data = skater_practice:
+      skater_id: skater.id
+      practice_id: $scope.currentPractice.id
+      status: skater.status.status
+    if skater.status.id
+      $http.put("/skater_practices/#{skater.status.id}.json", data)
+    else
+      $http.post("/skater_practices.json", data)
 
   $scope.init()
 

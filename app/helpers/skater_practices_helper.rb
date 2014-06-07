@@ -1,0 +1,2 @@
+module SkaterPracticesHelper
+end

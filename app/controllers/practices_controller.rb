@@ -1,5 +1,5 @@
 class PracticesController < ApplicationController
-  before_action :set_practice, only: [:show, :edit, :update, :destroy]
+  before_action :set_practice, only: [:show, :edit, :update, :destroy, :statuses]
 
   # GET /practices
   # GET /practices.json
@@ -15,6 +15,10 @@ class PracticesController < ApplicationController
   # GET /practices/new
   def new
     @practice = Practice.new
+  end
+
+  def statuses
+    render json: @practice.skater_practices
   end
 
   # GET /practices/1/edit

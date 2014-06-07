@@ -93,15 +93,25 @@
               .field.derby_name
                 {{skater.derby_name}}
               .field
-                %input{type: 'radio', 'ng-model' => 'status', value: 'attended'}
+                %input{type: 'radio', 'ng-model' => 'skater.status.status',
+                'ng-change' => "saveStatus(skater)",
+                value: 'attended'}
               .field
-                %input{type: 'radio', 'ng-model' => 'status', value: 'injured'}
+                %input{type: 'radio', 'ng-model' => 'skater.status.status',
+                'ng-change' => "saveStatus(skater)",
+                value: 'injured'}
               .field
-                %input{type: 'radio', 'ng-model' => 'status', value: 'vacation'}
+                %input{type: 'radio', 'ng-model' => 'skater.status.status',
+                'ng-change' => "saveStatus(skater)",
+                value: 'vacation'}
               .field
-                %input{type: 'radio', 'ng-model' => 'status', value: 'partial'}
+                %input{type: 'radio', 'ng-model' => 'skater.status.status',
+                'ng-change' => "saveStatus(skater)",
+                value: 'partial'}
               .field
-                %input{type: 'radio', 'ng-model' => 'status', value: 'absent'}
+                %input{type: 'radio', 'ng-model' => 'skater.status.status',
+                'ng-change' => "saveStatus(skater)",
+                value: 'absent'}
 
         .btn.btn-primary{'ng-click' => ''} Save
         .btn.btn-info{'ng-click' => 'hideSkaters()'} Hide
