@@ -5,7 +5,15 @@
   .field
     To:
     =date_select :end_date, :date, default: Date.today
-  =submit_tag "Go", class: 'btn btn-info'
+  =submit_tag "Search", class: 'btn btn-info'
+
+%hr
+
+%h4
+  Report from
+  =@report.start_date.strftime("%b %d, %Y")
+  to
+  =@report.end_date.strftime("%b %d, %Y")
 
 .field
   Total Practices:
@@ -18,4 +26,4 @@
   -@report.skaters.each do |skater|
     %tr
       %td= skater.derby_name
-      %td= skater.attendence_percentage
+      %td= "#{skater.attendence_percentage.to_i}%"
