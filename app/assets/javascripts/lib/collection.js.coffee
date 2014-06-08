@@ -2,7 +2,6 @@ class @Collection
   all: []
 
   save: (item) ->
-    console.log item
     if @find(item.id.current)
       @update(item)
     else

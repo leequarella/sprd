@@ -15,7 +15,6 @@ class @Model
 
   backup: ->
     for i in @properties
-      console.log i
       this[i].backup = this[i].current
 
   unsavedFields: ->
