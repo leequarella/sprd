@@ -52,7 +52,7 @@
             %li.item.practice{'ng-repeat' => "practice in practices | orderBy:predicate:reverse",
             'ng-click' => 'setCurrentPractice(practice)'}
               .field
-                {{practice.date | date: 'MMM d, yyyy'}}
+                {{practice.date | date: 'EEE MMM d, yyyy'}}
         .currentPractice
           .row
             %div{:class=>"col-md-6"}
