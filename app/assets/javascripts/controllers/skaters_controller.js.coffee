@@ -31,8 +31,9 @@
 
   $scope.deleteCurrentSkater= ->
     if confirm "Are you sure you want to delete this skater? This can't be undone."
-      $http.delete("/skaters/#{$scope.currentSkater.id}.json").then =>
-        $scope.pullSkaters()
+      if confirm "Are you absolutely sure this isn't an accident? It's kind of a big deal for you to be sure you want to delete #{$scope.currentSkater.derby_name}... this will kill all records of her attendence."
+        $http.delete("/skaters/#{$scope.currentSkater.id}.json").then =>
+          $scope.pullSkaters()
 
   $scope.init()
 ]
