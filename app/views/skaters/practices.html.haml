@@ -1,9 +1,9 @@
 =form_tag "/skaters/#{params[:id]}/practices", method: :get do
   .field
-    From:
+    .label.label-default From
     =date_select :start_date, :date, default: 1.month.ago
   .field
-    To:
+    .label.label-default To
     =date_select :end_date, :date, default: Date.today
   =submit_tag "Search", class: 'btn btn-info'
 
@@ -18,10 +18,10 @@
   = @report.end_date.strftime("%b %d, %Y")
 
 .field
-  Total Practices:
+  .label.label-primary Total Practices
   =@report.practices.count
 .field
-  Attendence Percentage:
+  .label.label-primary Attendence
   ="#{@skater.attendence_percentage_for(@report.practices).to_i}%"
 
 %br

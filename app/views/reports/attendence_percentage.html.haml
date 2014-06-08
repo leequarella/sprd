@@ -1,9 +1,9 @@
 =form_tag attendence_percentage_report_path, method: :get do
   .field
-    From:
+    .label.label-default From
     =date_select :start_date, :date, default: 1.month.ago
   .field
-    To:
+    .label.label-default To
     =date_select :end_date, :date, default: Date.today
   =submit_tag "Search", class: 'btn btn-info'
 
@@ -16,7 +16,7 @@
   =@report.end_date.strftime("%b %d, %Y")
 
 .field
-  Total Practices:
+  .label.label-primary Total Practices
   =@report.practices.count
 
 %table.attendence_report
