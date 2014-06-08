@@ -1,6 +1,6 @@
 class Skater < ActiveRecord::Base
   attr_accessor :attendence_percentage
-  has_many :skater_practices
+  has_many :skater_practices, dependent: :destroy
   has_many :practices, through: :skater_practices
 
   def attended?(practice)
