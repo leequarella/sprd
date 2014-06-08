@@ -3,6 +3,9 @@
   $scope.currentPractice = null
   $scope.init = ->
     $scope.pullPractices()
+    $scope.updateSkaters()
+
+  $scope.updateSkaters = ->
     $scope.skaters = skaters.all().then (skaters) ->
       $scope.skaters = skaters.data
 

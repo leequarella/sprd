@@ -18,6 +18,7 @@
     data = skater: {
       first_name: $scope.currentSkater.first_name
       last_name:  $scope.currentSkater.last_name
+      email:      $scope.currentSkater.email
       derby_name: $scope.currentSkater.derby_name}
     if $scope.currentSkater.id
       $http.put("/skaters/#{$scope.currentSkater.id}.json", data).success => $scope.pullSkaters()
