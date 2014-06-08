@@ -1,0 +1,21 @@
+=form_tag attendence_percentage_report_path, method: :get do
+  .field
+    From:
+    =date_select :start_date, :date, default: 1.month.ago
+  .field
+    To:
+    =date_select :end_date, :date, default: Date.today
+  =submit_tag "Go", class: 'btn btn-info'
+
+.field
+  Total Practices:
+  =@report.practices.count
+
+%table
+  %tr
+    %th Skater
+    %th Attendence
+  -@report.skaters.each do |skater|
+    %tr
+      %td= skater.derby_name
+      %td= skater.attendence_percentage

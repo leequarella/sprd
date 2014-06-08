@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   get 'dashboard/' => 'dashboard#index'
 
+  get 'reports/attendence_percentage' => 'reports#attendence_percentage',
+    as: 'attendence_percentage_report'
 end
