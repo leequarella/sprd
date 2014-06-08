@@ -17,6 +17,11 @@
     $scope.currentPractice = practice
     $scope.getStatuses()
 
+  $scope.deleteCurrentPractice = ->
+    if confirm "Are you sure you want to delete this practice? This can't be undone."
+      $http.delete("/practices/#{$scope.currentPractice.id}.json").then =>
+        $scope.pullPractices()
+
   $scope.getStatuses = ->
     $http.get("/practices/#{$scope.currentPractice.id}/statuses").then (statuses) =>
       $scope.appendStatuses statuses.data
@@ -35,7 +40,8 @@
     data = practice: {
       date: $scope.currentPractice.date}
     if $scope.currentPractice.id
-      $http.put("/practices/#{$scope.currentPractice.id}.json", data).success => $scope.pullPractices()
+      $http.put("/practices/#{$scope.currentPractice.id}.json", data)
+        .success => $scope.pullPractices()
     else
       $http.post("/practices.json", data).success => $scope.pullPractices()
 

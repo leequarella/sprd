@@ -38,7 +38,6 @@
           %input{'ng-model' => 'currentSkater.email', placeholder: 'Email'}
         .actions
           .btn.btn-primary{'ng-click' => 'saveCurrentSkater()'} Save
-        .actions
           .btn.btn-warning{'ng-click' => 'newSkater()'} New Skater
   %tab{"heading" => "Practices"}
     .practicesController{'ng-controller' => "practicesController"}
@@ -65,11 +64,13 @@
                     %button{:type=>"button", :class=>"btn btn-default", "ng-click"=>"open($event)"}
                       %i.glyphicon.glyphicon-calendar
           .actions
-            .btn.btn-primary{'ng-click' => 'saveCurrentPractice()'} Save
-          .actions
-            .btn.btn-info{'ng-show' => 'currentPractice', 'ng-click' => 'showSkaters()'} Skaters
-          .actions
-            .btn.btn-warning{'ng-click' => 'newPractice()'} New Practice
+            .btn.btn-primary{'ng-show' => 'currentPractice.date',
+              'ng-click' => 'saveCurrentPractice()'} Save
+            .btn.btn-info{'ng-show' => 'currentPractice.id',
+              'ng-click' => 'showSkaters()'} Skaters
+            .btn.btn-danger{'ng-show' => 'currentPractice.id',
+              'ng-click' => 'deleteCurrentPractice()'} Delete
+            .btn.btn-warning{'ng-show' => 'currentPractice.id', 'ng-click' => 'newPractice()'} New Practice
 
       .practiceSkaters{'ng-show' => 'displayPracticeSkaters'}
         %h4 Skaters for {{currentPractice.date | date: 'MMM d, yyyy'}}
