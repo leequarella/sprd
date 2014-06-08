@@ -46,6 +46,7 @@
       $http.post("/practices.json", data).success => $scope.pullPractices()
 
   $scope.showSkaters = ->
+    $scope.predicate = 'derby_name'
     $scope.displayPracticeSkaters = true
 
   $scope.hideSkaters = ->
