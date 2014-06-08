@@ -43,11 +43,12 @@
   %tab{"heading" => "Practices"}
     .practicesController{'ng-controller' => "practicesController"}
       %div{'ng-hide' => 'displayPracticeSkaters'}
-        .list
+        .list.practices
           .field_headers
             .field
               %div{'ng-click' => "predicate = 'date'; reverse=!reverse"}
                 Date
+
           %ul
             %li.item.practice{'ng-repeat' => "practice in practices | orderBy:predicate:reverse",
             'ng-click' => 'setCurrentPractice(practice)'}

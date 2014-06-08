@@ -46,10 +46,6 @@
     $scope.displayPracticeSkaters = false
 
   $scope.saveStatus = (skater)->
-    console.log skater
-    console.log skater.status
-    console.log skater.status.status
-    console.log '-------------------------'
     data = skater_practice:
       skater_id: skater.id
       practice_id: $scope.currentPractice.id
