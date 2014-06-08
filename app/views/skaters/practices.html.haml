@@ -11,7 +11,8 @@
 
 %h4
   = @skater.derby_name
-  attendence from
+  %br
+  Attendence from
   = @report.start_date.strftime("%b %d, %Y")
   to
   = @report.end_date.strftime("%b %d, %Y")
@@ -21,7 +22,7 @@
   =@report.practices.count
 .field
   Attendence Percentage:
-  ="#{@skater.attendence_percentage_for @report.practices}%"
+  ="#{@skater.attendence_percentage_for(@report.practices).to_i}%"
 
 %br
 
