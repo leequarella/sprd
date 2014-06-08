@@ -11,11 +11,7 @@ class AttendencePercentageReport
   private
     def calc
       @skaters.each do |skater|
-        credit = 0
-        @practices.each do |practice|
-          credit += 1 if skater.attended?(practice)
-        end
-        skater.attendence_percentage = (credit.to_f/@practices.length.to_f) * 100
+        skater.attendence_percentage = skater.attendence_percentage_for @practices
       end
     end
 end

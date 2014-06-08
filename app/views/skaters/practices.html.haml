@@ -16,6 +16,15 @@
   to
   = @report.end_date.strftime("%b %d, %Y")
 
+.field
+  Total Practices:
+  =@report.practices.count
+.field
+  Attendence Percentage:
+  ="#{@skater.attendence_percentage_for @report.practices}%"
+
+%br
+
 %table.attendence_report
   %tr
     %th Date

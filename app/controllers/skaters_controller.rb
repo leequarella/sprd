@@ -73,7 +73,7 @@ class SkatersController < ApplicationController
       @report.end_date   = 1.day.from_now
     end
     @report.practices = Practice.where("date > ? and date < ?", @report.start_date,
-                                       @report.end_date)
+                                       @report.end_date).order(:date)
   end
 
   private
