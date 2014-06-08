@@ -16,6 +16,10 @@
 //=require angular-bootstrap/ui-bootstrap
 //=require angular-bootstrap/ui-bootstrap-tpls
 //
+//= require_tree ./lib
+//= require_tree ./models
+//= require_tree ./collections
+//
 //= require derby_app
 //= require_tree ./services
 //= require_tree ./controllers

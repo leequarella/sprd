@@ -1,13 +1,21 @@
 @derby_app.controller "skatersController", ["$scope", "$http", ($scope, $http) ->
   $scope.init = ->
-    $scope.skaters = []
-    $scope.currentSkater = {}
-    $scope.predicate = 'derby_name'
-    $scope.pullSkaters()
+    $scope.skaters           = []
+    $scope.skatersDisplayed  = []
+    $scope.currentSkater     = {}
+    $scope.predicate         = 'derby_name'
+    $scope.pullSkaters().then =>
+      $scope.showAll()
 
   $scope.pullSkaters = ->
-    $http.get("/skaters.json").success (data) =>
-      $scope.skaters = data
+    $http.get("/skaters.json").then (skaters_data) =>
+      for skater_data in skaters_data.data
+        skater = new Skater(skater_data)
+        Skaters.save skater
+      $scope.skaters = Skaters.all
+
+  $scope.showAll = ->
+    $scope.skatersDisplayed = $scope.skaters
 
   $scope.setCurrentSkater = (skater) ->
     $scope.currentSkater = skater
@@ -34,6 +42,13 @@
       if confirm "Are you absolutely sure this isn't an accident? It's kind of a big deal for you to be sure you want to delete #{$scope.currentSkater.derby_name}... this will kill all records of her attendence."
         $http.delete("/skaters/#{$scope.currentSkater.id}.json").then =>
           $scope.pullSkaters()
+
+  $scope.search = (property, value)->
+    if value
+      skaters = Skaters.fuzzy_find_by_property(property, value)
+      $scope.skatersDisplayed = skaters
+    else
+      $scope.showAll()
 
   $scope.init()
 ]
