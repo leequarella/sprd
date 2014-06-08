@@ -4,15 +4,20 @@
       .list
         .field_headers
           .field
-            First Name
+            %div{'ng-click' => "predicate = 'first_name'; reverse=!reverse"}
+              First Name
           .field
-            Last Name
+            %div{'ng-click' => "predicate = 'last_name'; reverse=!reverse"}
+              Last Name
           .field
-            Derby Name
+            %div{'ng-click' => "predicate = 'derby_name'; reverse=!reverse"}
+              Derby Name
           .field
-            Email
+            %div{'ng-click' => "predicate = 'email'; reverse=!reverse"}
+              Email
         %ul
-          %li.item.skater{'ng-repeat' => "skater in skaters", 'ng-click' => 'setCurrentSkater(skater)'}
+          %li.item.skater{'ng-repeat' => "skater in skaters | orderBy:predicate:reverse",
+          'ng-click' => 'setCurrentSkater(skater)'}
             .field
               {{skater.first_name}}
             .field
@@ -41,19 +46,13 @@
         .list
           .field_headers
             .field
-              Year
-            .field
-              Month
-            .field
-              Day
+              %div{'ng-click' => "predicate = 'date'; reverse=!reverse"}
+                Date
           %ul
-            %li.item.practice{'ng-repeat' => "practice in practices", 'ng-click' => 'setCurrentPractice(practice)'}
+            %li.item.practice{'ng-repeat' => "practice in practices | orderBy:predicate:reverse",
+            'ng-click' => 'setCurrentPractice(practice)'}
               .field
-                {{practice.date | date: 'yyyy'}}
-              .field
-                {{practice.date | date: 'MMM'}}
-              .field
-                {{practice.date | date: 'd'}}
+                {{practice.date | date: 'MMM d, yyyy'}}
         .currentPractice
           .row
             %div{:class=>"col-md-6"}

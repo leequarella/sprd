@@ -1,7 +1,8 @@
 @derby_app.controller "skatersController", ["$scope", "$http", ($scope, $http) ->
-  $scope.skaters = []
-  $scope.currentSkater = {}
   $scope.init = ->
+    $scope.skaters = []
+    $scope.currentSkater = {}
+    $scope.predicate = ''
     $scope.pullSkaters()
 
   $scope.pullSkaters = ->
