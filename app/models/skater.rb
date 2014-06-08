@@ -11,4 +11,12 @@ class Skater < ActiveRecord::Base
       true
     end
   end
+  def status_for(practice)
+    skater_practice = SkaterPractice.where(skater: self, practice: practice).first
+    if !skater_practice
+      'absent'
+    else
+      skater_practice.status
+    end
+  end
 end

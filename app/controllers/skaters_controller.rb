@@ -1,5 +1,5 @@
 class SkatersController < ApplicationController
-  before_action :set_skater, only: [:show, :edit, :update, :destroy]
+  before_action :set_skater, only: [:show, :edit, :update, :destroy, :practices]
 
   # GET /skaters
   # GET /skaters.json
@@ -59,6 +59,21 @@ class SkatersController < ApplicationController
       format.html { redirect_to skaters_url, notice: 'Skater was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def practices
+    report = Struct.new(:start_date, :end_date, :practices, :skater)
+    @report = report.new
+    @report.skater = @skater
+    if params[:start_date]
+      @report.start_date = date_from_params params[:start_date]
+      @report.end_date   = date_from_params params[:end_date]
+    else
+      @report.start_date = 1.month.ago
+      @report.end_date   = 1.day.from_now
+    end
+    @report.practices = Practice.where("date > ? and date < ?", @report.start_date,
+                                       @report.end_date)
   end
 
   private

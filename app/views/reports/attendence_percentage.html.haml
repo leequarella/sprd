@@ -25,5 +25,5 @@
     %th Attendence
   -@report.skaters.each do |skater|
     %tr
-      %td= skater.derby_name
+      %td= link_to skater.derby_name, "/skaters/#{skater.id}/practices"
       %td= "#{skater.attendence_percentage.to_i}%"

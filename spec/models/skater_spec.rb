@@ -25,4 +25,22 @@ RSpec.describe Skater, :type => :model do
       end
     end
   end
+
+  describe "status_for" do
+    let(:skater) { Skater.create }
+    let(:practice) {Practice.create}
+    context "a record exists for this skater at this practice" do
+      let!(:skater_practice) {SkaterPractice.create(skater: skater, practice:practice,
+                                                   status: "attended")}
+      it "returns the status" do
+        expect(skater.status_for practice).to eq 'attended'
+      end
+    end
+    context "no record exists for this skater at this practice" do
+      it "returns 'absent'" do
+        SkaterPractice.destroy_all
+        expect(skater.status_for practice).to eq 'absent'
+      end
+    end
+  end
 end

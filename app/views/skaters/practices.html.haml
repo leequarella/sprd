@@ -1,0 +1,26 @@
+=form_tag "/skaters/#{params[:id]}/practices", method: :get do
+  .field
+    From:
+    =date_select :start_date, :date, default: 1.month.ago
+  .field
+    To:
+    =date_select :end_date, :date, default: Date.today
+  =submit_tag "Search", class: 'btn btn-info'
+
+%hr
+
+%h4
+  = @skater.derby_name
+  attendence from
+  = @report.start_date.strftime("%b %d, %Y")
+  to
+  = @report.end_date.strftime("%b %d, %Y")
+
+%table.attendence_report
+  %tr
+    %th Date
+    %th Status
+  -@report.practices.each do |practice|
+    %tr
+      %td=practice.date.strftime("%b %d, %Y")
+      %td=@skater.status_for practice

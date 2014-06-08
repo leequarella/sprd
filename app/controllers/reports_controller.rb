@@ -11,9 +11,4 @@ class ReportsController < ApplicationController
                                              end_date:   end_date)
   end
 
-  private
-    def date_from_params date
-      DateTime.new(date['date(1i)'].to_i, date['date(2i)'].to_i, date['date(3i)'].to_i)
-    end
-
 end

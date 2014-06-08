@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     member { get :statuses }
   end
 
-  resources :skaters
+  resources :skaters do
+    member { get :practices }
+  end
 
   resources :skater_practices
 
