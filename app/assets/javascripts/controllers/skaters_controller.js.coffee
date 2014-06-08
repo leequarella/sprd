@@ -2,7 +2,7 @@
   $scope.init = ->
     $scope.skaters = []
     $scope.currentSkater = {}
-    $scope.predicate = ''
+    $scope.predicate = 'derby_name'
     $scope.pullSkaters()
 
   $scope.pullSkaters = ->

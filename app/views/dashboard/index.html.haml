@@ -4,14 +4,14 @@
       .list
         .field_headers
           .field
+            %div{'ng-click' => "predicate = 'derby_name'; reverse=!reverse"}
+              Derby Name
+          .field
             %div{'ng-click' => "predicate = 'first_name'; reverse=!reverse"}
               First Name
           .field
             %div{'ng-click' => "predicate = 'last_name'; reverse=!reverse"}
               Last Name
-          .field
-            %div{'ng-click' => "predicate = 'derby_name'; reverse=!reverse"}
-              Derby Name
           .field
             %div{'ng-click' => "predicate = 'email'; reverse=!reverse"}
               Email
@@ -19,11 +19,11 @@
           %li.item.skater{'ng-repeat' => "skater in skaters | orderBy:predicate:reverse",
           'ng-click' => 'setCurrentSkater(skater)'}
             .field
+              {{skater.derby_name}}
+            .field
               {{skater.first_name}}
             .field
               {{skater.last_name}}
-            .field
-              {{skater.derby_name}}
             .field
               {{skater.email}}
 
