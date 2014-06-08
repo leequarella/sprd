@@ -4,22 +4,22 @@
       .list
         .field_headers
           .field
-            %div{'ng-click' => "predicate = 'derby_name'; reverse=!reverse"}
+            %div{'ng-click' => "predicate = 'derby_name.current'; reverse=!reverse"}
               Derby Name
             %input{placeholder:'Derby Name', "ng-model" => "derby_name_search",
             "ng-change" => "search('derby_name', derby_name_search)"}
           .field
-            %div{'ng-click' => "predicate = 'first_name'; reverse=!reverse"}
+            %div{'ng-click' => "predicate = 'first_name.current'; reverse=!reverse"}
               First Name
             %input{placeholder:'First Name', "ng-model" => "first_name_search",
             "ng-change" => "search('first_name', first_name_search)"}
           .field
-            %div{'ng-click' => "predicate = 'last_name'; reverse=!reverse"}
+            %div{'ng-click' => "predicate = 'last_name.current'; reverse=!reverse"}
               Last Name
             %input{placeholder:'Last Name', "ng-model" => "last_name_search",
             "ng-change" => "search('last_name', last_name_search)"}
           .field
-            %div{'ng-click' => "predicate = 'email'; reverse=!reverse"}
+            %div{'ng-click' => "predicate = 'email.current'; reverse=!reverse"}
               Email
             %input{placeholder:'Email', "ng-model" => "email_search",
             "ng-change" => "search('email', email_search)"}
