@@ -23,6 +23,9 @@
 .field
   .label.label-primary Attendence
   ="#{@skater.attendence_percentage_for(@report.practices).to_i}%"
+.field
+  .label.label-primary Vacation Days Remaining
+  =@skater.vacation_days
 
 %br
 
