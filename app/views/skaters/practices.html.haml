@@ -10,7 +10,7 @@
 %hr
 
 %h4
-  = @skater.derby_name
+  = @skater.derby_name || "#{@skater.first_name} #{@skater.last_name}"
   %br
   Attendence from
   = @report.start_date.strftime("%b %d, %Y")
@@ -18,14 +18,17 @@
   = @report.end_date.strftime("%b %d, %Y")
 
 .field
-  .label.label-primary Total Practices
-  =@report.practices.count
+  .label.label-primary
+    Total Practices
+    =@report.practices.count
 .field
-  .label.label-primary Attendence
-  ="#{@skater.attendence_percentage_for(@report.practices).to_i}%"
+  .label.label-primary
+    Attendence
+    ="#{@skater.attendence_percentage_for(@report.practices).to_i}%"
 .field
-  .label.label-primary Vacation Days Remaining
-  =@skater.vacation_days
+  .label.label-primary
+    =@skater.vacation_days
+    Vacation Days Remaining
 
 %br
 
