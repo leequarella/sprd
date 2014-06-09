@@ -10,14 +10,14 @@
 %hr
 
 %h4
-  Report from
+  Report for
   =@report.start_date.strftime("%b %d, %Y")
-  to
+  thru
   =@report.end_date.strftime("%b %d, %Y")
 
-.field
-  .label.label-primary Total Practices
+.label.label-primary
   =@report.practices.count
+  Practices
 
 %table.attendence_report
   %tr
