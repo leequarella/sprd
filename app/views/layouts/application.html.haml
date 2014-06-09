@@ -6,17 +6,22 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %h1 SPRD
-    =link_to 'Attendence Report', attendence_percentage_report_path
-    \|
-    -if current_user
-      =link_to 'Management', management_dashboard_path
+    %header
+      .logo
+        =image_tag 'http://static.wixstatic.com/media/732b77_ccfb7a15c95a40008432a4ab103fec99.png_srz_p_173_173_75_22_0.50_1.20_0.00_png_srz'
+
+      %h1 SPRD
+      =link_to 'Attendence Report', attendence_percentage_report_path
       \|
-      =link_to 'Log out', logoff_path
-      \|
-      =current_user.email
-    -else
-      =link_to 'Login', login_path
+      -if current_user
+        =link_to 'Management', management_dashboard_path
+        \|
+        =link_to 'Log out', logoff_path
+        \|
+        =current_user.email
+      -else
+        =link_to 'Login', login_path
+
 
     %hr
     = yield
