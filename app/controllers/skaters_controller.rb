@@ -4,7 +4,7 @@ class SkatersController < ApplicationController
   # GET /skaters
   # GET /skaters.json
   def index
-    @skaters = Skater.all
+    @skaters = Skater.all.order(:derby_name)
   end
 
   # GET /skaters/1

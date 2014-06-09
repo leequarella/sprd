@@ -41,7 +41,9 @@
     if confirm "Are you sure you want to delete this skater? This can't be undone."
       if confirm "Are you absolutely sure this isn't an accident? It's kind of a big deal for you to be sure you want to delete #{$scope.currentSkater.derby_name.current}... this will kill all records of her attendence."
         $http.delete("/skaters/#{$scope.currentSkater.id.current}.json").then =>
-          $scope.pullSkaters()
+          Skaters.remove($scope.currentSkater.id.current)
+          $scope.pullSkaters().then => $scope.showAll()
+
 
   $scope.search = (property, value)->
     if value
