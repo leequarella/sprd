@@ -38,6 +38,16 @@ class Skater < ActiveRecord::Base
     end
   end
 
+  def use_vacation_day
+    self.vacation_days -= 1
+    self.save
+  end
+
+  def add_vacation_day
+    self.vacation_days += 1
+    self.save
+  end
+
   private
   def attendence_percentage_for_day_of_week(day_of_week, date_range)
     practices = Practice.where("date > ? and date < ?", date_range[:from], date_range[:to])
