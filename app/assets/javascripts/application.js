@@ -15,6 +15,8 @@
 //=require angular/angular
 //=require angular-bootstrap/ui-bootstrap
 //=require angular-bootstrap/ui-bootstrap-tpls
+//=require headroom.js/dist/headroom
+//=require headroom.js/dist/jQuery.headroom
 //
 //= require_tree ./lib
 //= require_tree ./models

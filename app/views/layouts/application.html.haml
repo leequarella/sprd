@@ -6,7 +6,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %header
+    %header#header
       .logo
         =image_tag 'http://static.wixstatic.com/media/732b77_ccfb7a15c95a40008432a4ab103fec99.png_srz_p_173_173_75_22_0.50_1.20_0.00_png_srz'
 
@@ -22,6 +22,8 @@
       -else
         =link_to 'Login', login_path
 
+    .content
+      = yield
 
-    %hr
-    = yield
+    :javascript
+      $("#header").headroom()
