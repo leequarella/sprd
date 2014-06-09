@@ -42,6 +42,7 @@
       if confirm "Are you absolutely sure this isn't an accident? It's kind of a big deal for you to be sure you want to delete #{$scope.currentSkater.derby_name.current}... this will kill all records of her attendence."
         $http.delete("/skaters/#{$scope.currentSkater.id.current}.json").then =>
           Skaters.remove($scope.currentSkater.id.current)
+          $scope.newSkater()
           $scope.pullSkaters().then => $scope.showAll()
 
 
