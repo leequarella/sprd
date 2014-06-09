@@ -1,0 +1,11 @@
+=form_tag sessions_path do
+  .field
+    .label.label-default Email
+    %input{name: 'email'}
+
+  .field
+    .label.label-default Password
+    %input{name: 'password', type: 'password'}
+
+  .action
+    =submit_tag 'Go', class: "btn btn-primary"
