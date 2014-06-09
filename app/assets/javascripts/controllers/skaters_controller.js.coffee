@@ -25,12 +25,12 @@
 
   $scope.saveCurrentSkater = ->
     data = skater: {
-      first_name: $scope.currentSkater.first_name
-      last_name:  $scope.currentSkater.last_name
-      email:      $scope.currentSkater.email
-      derby_name: $scope.currentSkater.derby_name}
+      first_name: $scope.currentSkater.first_name.current
+      last_name:  $scope.currentSkater.last_name.current
+      email:      $scope.currentSkater.email.current
+      derby_name: $scope.currentSkater.derby_name.current}
     if $scope.currentSkater.id
-      $http.put("/skaters/#{$scope.currentSkater.id}.json", data).success (skater) =>
+      $http.put("/skaters/#{$scope.currentSkater.id.current}.json", data).success (skater) =>
         $scope.pullSkaters()
     else
       $http.post("/skaters.json", data).success (skater) =>
@@ -40,7 +40,7 @@
   $scope.deleteCurrentSkater= ->
     if confirm "Are you sure you want to delete this skater? This can't be undone."
       if confirm "Are you absolutely sure this isn't an accident? It's kind of a big deal for you to be sure you want to delete #{$scope.currentSkater.derby_name.current}... this will kill all records of her attendence."
-        $http.delete("/skaters/#{$scope.currentSkater.id}.json").then =>
+        $http.delete("/skaters/#{$scope.currentSkater.id.current}.json").then =>
           $scope.pullSkaters()
 
   $scope.search = (property, value)->
