@@ -106,6 +106,7 @@
               Partial
             .field
               Absent
+            .field
 
           %ul
             %li.item.skater{'ng-repeat' => "skater in skaters | orderBy:predicate:reverse",
@@ -137,5 +138,8 @@
                 %input{type: 'radio', 'ng-model' => 'skater.status.status',
                 'ng-change' => "saveStatus(skater)",
                 value: 'absent'}
+              .field
+                .btn.btn-danger.btn-xs{'ng-show' => 'skater.status.status',
+                  'ng-click' => 'clearStatus(skater)'} Clear
 
         .btn.btn-info{'ng-click' => 'hideSkaters()'} Hide

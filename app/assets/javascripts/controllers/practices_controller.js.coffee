@@ -60,7 +60,12 @@
     if skater.status.id
       $http.put("/skater_practices/#{skater.status.id}.json", data)
     else
-      $http.post("/skater_practices.json", data)
+      $http.post("/skater_practices.json", data).then (response) =>
+        skater.status = response.data
+
+  $scope.clearStatus = (skater) ->
+    $http.delete("/skater_practices/#{skater.status.id}.json").then =>
+      skater.status = {status: '', id: null}
 
   $scope.init()
 

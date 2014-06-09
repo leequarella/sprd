@@ -19,6 +19,17 @@ class SkaterPracticesController < ApplicationController
     render json: status
   end
 
+  def destroy
+    status = SkaterPractice.find(params[:id])
+    if status.status == 'vacation'
+      status.skater.add_vacation_day
+    end
+    status.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
   private
     def valid_params
       params.require(:skater_practice).permit(:skater_id, :practice_id, :status)
