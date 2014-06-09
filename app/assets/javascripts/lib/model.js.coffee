@@ -28,3 +28,9 @@ class @Model
       true
     else
       false
+
+  persisted: ->
+    if @get('id')
+      true
+    else
+      false

@@ -46,8 +46,8 @@
           %input{'ng-model' => 'currentSkater.email.current', placeholder: 'Email'}
         .actions
           .btn.btn-primary{'ng-show' => 'currentSkater', 'ng-click' => 'saveCurrentSkater()'} Save
-          .btn.btn-warning{'ng-show' => 'currentSkater.id', 'ng-click' => 'newSkater()'} New Skater
-          .btn.btn-danger{'ng-show' => 'currentSkater.id',
+          .btn.btn-warning{'ng-show' => 'currentSkater.persisted()', 'ng-click' => 'newSkater()'} New Skater
+          .btn.btn-danger{'ng-show' => 'currentSkater.persisted()',
             'ng-click' => 'deleteCurrentSkater()'} Delete
   %tab{"heading" => "Practices"}
     .practicesController{'ng-controller' => "practicesController"}

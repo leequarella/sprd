@@ -1,9 +1,9 @@
 @derby_app.controller "skatersController", ["$scope", "$http", ($scope, $http) ->
+  $scope.predicate         = 'derby_name'
   $scope.init = ->
     $scope.skaters           = []
     $scope.skatersDisplayed  = []
-    $scope.currentSkater     = {}
-    $scope.predicate         = 'derby_name'
+    $scope.currentSkater     = new Skater
     $scope.pullSkaters().then =>
       $scope.showAll()
 
@@ -21,7 +21,7 @@
     $scope.currentSkater = skater
 
   $scope.newSkater = ->
-    $scope.currentSkater = {}
+    $scope.currentSkater = new Skater
 
   $scope.saveCurrentSkater = ->
     data = skater: {
@@ -29,7 +29,7 @@
       last_name:  $scope.currentSkater.last_name.current
       email:      $scope.currentSkater.email.current
       derby_name: $scope.currentSkater.derby_name.current}
-    if $scope.currentSkater.id
+    if $scope.currentSkater.persisted()
       $http.put("/skaters/#{$scope.currentSkater.id.current}.json", data).success (skater) =>
         $scope.pullSkaters()
     else
