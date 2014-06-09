@@ -109,7 +109,8 @@
 
           %ul
             %li.item.skater{'ng-repeat' => "skater in skaters | orderBy:predicate:reverse",
-            'ng-click' => 'setCurrentSkater(skater)'}
+            'ng-click' => 'setCurrentSkater(skater)',
+            "ng-class"=>"skater.status.status ? '' : 'no_status'"}
               .field.derby_name
                 .span{'ng-show' => 'skater.derby_name'}
                   {{skater.derby_name}}
