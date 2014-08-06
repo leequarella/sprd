@@ -26,7 +26,11 @@ class Skater < ActiveRecord::Base
     practices.each do |practice|
       credit += 1 if self.attended?(practice)
     end
-    self.attendence_percentage = (credit.to_f/practices.length.to_f) * 100
+    if credit > 0
+      self.attendence_percentage = (credit.to_f/practices.length.to_f) * 100
+    else
+      credit
+    end
   end
 
   def roster_eligible? date_range
