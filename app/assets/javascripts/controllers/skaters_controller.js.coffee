@@ -28,6 +28,7 @@
       first_name: $scope.currentSkater.first_name.current
       last_name:  $scope.currentSkater.last_name.current
       email:      $scope.currentSkater.email.current
+      status:     $scope.currentSkater.status.current
       derby_name: $scope.currentSkater.derby_name.current}
     if $scope.currentSkater.persisted()
       $http.put("/skaters/#{$scope.currentSkater.id.current}.json", data).success (skater) =>

@@ -51,6 +51,9 @@
         .field
           .label.label-default Vacation Days
           %input{'ng-model' => 'currentSkater.vacation_days.current', placeholder: 'Vacation Days'}
+        .field
+          .label.label-default Status
+          %input{'ng-model' => 'currentSkater.status.current', placeholder: 'Status'}
         .actions
           .btn.btn-primary{'ng-show' => 'currentSkater', 'ng-click' => 'saveCurrentSkater()'} Save
           .btn.btn-warning{'ng-show' => 'currentSkater.persisted()', 'ng-click' => 'newSkater()'} New Skater
