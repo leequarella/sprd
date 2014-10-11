@@ -24,12 +24,12 @@
   %tr
     %th Skater
     %th Attendence
-    %th Roster Eligible
+    -#%th Roster Eligible
   -@report.skaters.each do |skater|
     %tr
       %td= link_to (skater.derby_name || "#{skater.first_name} #{skater.last_name}"), :controller => :skaters, :id => skater.id, :action => :practices, start_date: date_to_params(@report.start_date), end_date: date_to_params(@report.end_date)
       %td= "#{skater.attendence_percentage.to_i}%"
-      %td
+      -#%td
         - if skater.roster_eligible?(from: @report.start_date, to: @report.end_date)
           .label.label-success eligible
         -else
