@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609005138) do
+ActiveRecord::Schema.define(version: 20140814143421) do
 
   create_table "practices", force: true do |t|
     t.datetime "date"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140609005138) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vacation_days", default: 5
+    t.string   "status",        default: "active"
   end
 
   create_table "users", force: true do |t|
