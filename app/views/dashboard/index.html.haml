@@ -53,7 +53,10 @@
           %input{'ng-model' => 'currentSkater.vacation_days.current', placeholder: 'Vacation Days'}
         .field
           .label.label-default Status
-          %input{'ng-model' => 'currentSkater.status.current', placeholder: 'Status'}
+          %span.skaterStatus{'ng-repeat' => "status in skaterStatuses"}
+            {{status}}
+            %input{type: "radio", 'ng-model' => 'currentSkater.status.current',
+            "ng-value"=> "status"}
         .actions
           .btn.btn-primary{'ng-show' => 'currentSkater', 'ng-click' => 'saveCurrentSkater()'} Save
           .btn.btn-warning{'ng-show' => 'currentSkater.persisted()', 'ng-click' => 'newSkater()'} New Skater

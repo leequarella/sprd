@@ -3,12 +3,14 @@
   $scope.init = ->
     $scope.skaters           = []
     $scope.skatersDisplayed  = []
+    $scope.skaterStatuses    = ["Active", "Inactive"]
     $scope.currentSkater     = new Skater
     $scope.pullSkaters().then =>
       $scope.showAll()
 
   $scope.pullSkaters = ->
     $http.get("/skaters.json").then (skaters_data) =>
+      console.log skaters_data
       for skater_data in skaters_data.data
         skater = new Skater(skater_data)
         Skaters.save skater
@@ -18,6 +20,7 @@
     $scope.skatersDisplayed = $scope.skaters
 
   $scope.setCurrentSkater = (skater) ->
+    console.log skater
     $scope.currentSkater = skater
 
   $scope.newSkater = ->
