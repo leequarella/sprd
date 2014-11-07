@@ -40,13 +40,13 @@
         .field
           Attended
         .field
-          Injured
-        .field
-          Vacation
+          Absent
         .field
           Partial
         .field
-          Absent
+          Vacation
+        .field
+          Injured
         .field
 
       %ul
@@ -66,11 +66,7 @@
           .field
             %input{type: 'radio', 'ng-model' => 'skater.status.status',
             'ng-change' => "saveStatus(skater)",
-            value: 'injured'}
-          .field
-            %input{type: 'radio', 'ng-model' => 'skater.status.status',
-            'ng-change' => "saveStatus(skater)",
-            value: 'vacation'}
+            value: 'absent'}
           .field
             %input{type: 'radio', 'ng-model' => 'skater.status.status',
             'ng-change' => "saveStatus(skater)",
@@ -78,7 +74,11 @@
           .field
             %input{type: 'radio', 'ng-model' => 'skater.status.status',
             'ng-change' => "saveStatus(skater)",
-            value: 'absent'}
+            value: 'vacation'}
+          .field
+            %input{type: 'radio', 'ng-model' => 'skater.status.status',
+            'ng-change' => "saveStatus(skater)",
+            value: 'injured'}
           .field
             .btn.btn-danger.btn-xs{'ng-show' => 'skater.status.status',
               'ng-click' => 'clearStatus(skater)'} Clear
