@@ -3,6 +3,8 @@ class Skater < ActiveRecord::Base
   has_many :skater_practices, dependent: :destroy
   has_many :practices, through: :skater_practices
 
+  scope :active, -> {where(status: "Active")}
+
   def attended?(practice)
     skater_practice = SkaterPractice.where(skater: self, practice: practice).first
     if !skater_practice || skater_practice.status == 'absent'

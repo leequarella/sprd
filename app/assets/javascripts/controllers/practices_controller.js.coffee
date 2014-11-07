@@ -6,7 +6,8 @@
     $scope.updateSkaters()
 
   $scope.updateSkaters = ->
-    $scope.skaters = skaters.all().then (skaters) ->
+    $scope.skaters = skaters.active().then (skaters) ->
+      console.log skaters
       $scope.skaters = skaters.data
 
   $scope.pullPractices = ->

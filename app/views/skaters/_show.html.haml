@@ -1,0 +1,62 @@
+.skatersController{'ng-controller' => 'skatersController'}
+  .list
+    .field_headers
+      .field
+        %div{'ng-click' => "predicate = 'derby_name.current'; reverse=!reverse"}
+          Derby Name
+        %input{placeholder:'Derby Name', "ng-model" => "derby_name_search",
+        "ng-change" => "search('derby_name', derby_name_search)"}
+      .field
+        %div{'ng-click' => "predicate = 'first_name.current'; reverse=!reverse"}
+          First Name
+        %input{placeholder:'First Name', "ng-model" => "first_name_search",
+        "ng-change" => "search('first_name', first_name_search)"}
+      .field
+        %div{'ng-click' => "predicate = 'last_name.current'; reverse=!reverse"}
+          Last Name
+        %input{placeholder:'Last Name', "ng-model" => "last_name_search",
+        "ng-change" => "search('last_name', last_name_search)"}
+      .field
+        %div{'ng-click' => "predicate = 'email.current'; reverse=!reverse"}
+          Email
+        %input{placeholder:'Email', "ng-model" => "email_search",
+        "ng-change" => "search('email', email_search)"}
+    %ul
+      %li.item.skater{'ng-repeat' => "skater in skatersDisplayed | orderBy:predicate:reverse",
+      'ng-click' => 'setCurrentSkater(skater)'}
+        .field
+          {{skater.derby_name.current}}
+        .field
+          {{skater.first_name.current}}
+        .field
+          {{skater.last_name.current}}
+        .field
+          {{skater.email.current}}
+
+  .currentSkater
+    .field
+      .label.label-default First Name
+      %input{'ng-model' => 'currentSkater.first_name.current', placeholder: 'First Name'}
+    .field
+      .label.label-default Last Name
+      %input{'ng-model' => 'currentSkater.last_name.current', placeholder: 'Last Name'}
+    .field
+      .label.label-default Derby Name
+      %input{'ng-model' => 'currentSkater.derby_name.current', placeholder: 'Derby Name'}
+    .field
+      .label.label-default Email
+      %input{'ng-model' => 'currentSkater.email.current', placeholder: 'Email'}
+    .field
+      .label.label-default Vacation Days
+      %input{'ng-model' => 'currentSkater.vacation_days.current', placeholder: 'Vacation Days'}
+    .field
+      .label.label-default Status
+      %span.skaterStatus{'ng-repeat' => "status in skaterStatuses"}
+        {{status}}
+        %input{type: "radio", 'ng-model' => 'currentSkater.status.current',
+        "ng-value"=> "status"}
+    .actions
+      .btn.btn-primary{'ng-show' => 'currentSkater', 'ng-click' => 'saveCurrentSkater()'} Save
+      .btn.btn-warning{'ng-show' => 'currentSkater.persisted()', 'ng-click' => 'newSkater()'} New Skater
+      .btn.btn-danger{'ng-show' => 'currentSkater.persisted()',
+        'ng-click' => 'deleteCurrentSkater()'} Delete

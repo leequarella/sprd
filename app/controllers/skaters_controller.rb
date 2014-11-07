@@ -4,7 +4,11 @@ class SkatersController < ApplicationController
   # GET /skaters
   # GET /skaters.json
   def index
-    @skaters = Skater.all.order(:derby_name)
+    if params[:status] == "Active"
+      @skaters = Skater.active.order(:derby_name)
+    else
+      @skaters = Skater.all.order(:derby_name)
+    end
   end
 
   # GET /skaters/1
