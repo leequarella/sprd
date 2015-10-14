@@ -10,18 +10,27 @@
     %header#header
       %nav{:class=>"navbar navbar-default", :role=>"navigation"}
         .container-fluid
+          %button.pull-right{type: "button", class: "navbar-toggle collapsed",
+          "data-toggle" => "collapse", "data-target" => "#navbar-collapsable",
+          "aria-expanded"=>"false"}
+            %span{class: "sr-only"}
+              Toggle navigation
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
           .navbar-header
             %a{:class=>"navbar-brand", :href=>"#"} SPRD
-          %ul.nav.navbar-nav
-            %li=link_to 'Attendence', attendence_percentage_report_path
+          #navbar-collapsable.collapse.navbar-collapse
+            %ul.nav.navbar-nav.navbar-right
+              %li=link_to 'Attendence', attendence_percentage_report_path
+              -if current_user
+                %li=link_to 'Management', management_dashboard_path
+                %li=link_to 'Log out', logoff_path
+              -else
+                %li=link_to 'Login', login_path
             -if current_user
-              %li=link_to 'Management', management_dashboard_path
-              %li=link_to 'Log out', logoff_path
-            -else
-              %li=link_to 'Login', login_path
-          -if current_user
-            .navbar-text.navbar-right
-              =current_user.email
+              .navbar-text.navbar-right
+                =current_user.email
 
     .content
       = yield
