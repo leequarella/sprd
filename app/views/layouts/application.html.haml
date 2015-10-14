@@ -4,7 +4,7 @@
     %title Sprd
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    -#%meta{name: "viewport", content: "width=device-width, initial-scale=1"}
     = csrf_meta_tags
   %body
     %header#header
@@ -21,6 +21,9 @@
           .navbar-header
             %a{:class=>"navbar-brand", :href=>"#"} SPRD
           #navbar-collapsable.collapse.navbar-collapse
+            -if current_user
+              .navbar-text.navbar-right
+                =current_user.email
             %ul.nav.navbar-nav.navbar-right
               %li=link_to 'Attendence', attendence_percentage_report_path
               -if current_user
@@ -28,9 +31,6 @@
                 %li=link_to 'Log out', logoff_path
               -else
                 %li=link_to 'Login', login_path
-            -if current_user
-              .navbar-text.navbar-right
-                =current_user.email
 
     .content
       = yield
